@@ -1,0 +1,362 @@
+V 13
+3
+LANG:10000 8 (NoName)
+LANG:10001 8 (NoName)
+LANG:10027 18 (БезИмени)
+PANEL,-1 -1 797 563 N "_3DFace" 1
+"$dpe_alarm"
+E E E E E 1 -1 -1 0  24 72
+""0  1
+E E 3
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+3
+LANG:10000 6 Layer1
+LANG:10001 6 Layer1
+LANG:10027 6 Layer1
+10 4
+"Polyline1"
+""
+1 24 72 E E E 1 E 1 E N "_WindowText" E N {255,0,0} E "// SimpleCtrlScriptStart {valid}
+main(int iType)
+{
+  dyn_errClass err;
+
+  int          i, iReturnValue = 1, iDpCount = 1;
+  dyn_int      diType = makeDynInt();
+  dyn_string   dsDps;
+
+  dsDps[1] = $dpe_alarm + \":_alert_hdl.._ack\";
+
+  if ( isFunctionDefined(\"isAckable\") )
+  {
+    isAckable( iType, dsDps, iReturnValue );
+    if ( iReturnValue == 0 || dynlen (dsDps ) < 1 ) return;
+  }
+
+  for ( i = 1; i <= dynlen(dsDps); i++ )
+    diType[i] = iType;
+
+  dpSetWait( dsDps, diType );
+
+  err = getLastError();
+  if ( dynlen(err) > 0 )
+    DebugN(err);
+}
+// SimpleCtrlScript {EP_confirm}
+// dpCount {1}
+// dp1 {$dpe_alarm}
+// SimpleCtrlScriptEnd {EP_confirm}
+" 0
+
+ E E
+5 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+2
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {valid}
+main()
+{
+  EP_setVisible();
+  EP_setBackColor();
+}
+
+EP_setVisible()
+{
+dyn_errClass err;
+
+  if( !dpExists( $dpe_alarm+\":_alert_hdl.._act_state_color\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_setVisibleCB\",
+            $dpe_alarm+\":_alert_hdl.._act_state_color\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+
+EP_setVisibleCB(string dp, string sNewValue)
+{
+  setValue(\"\", \"visible\",
+           !(sNewValue == \"\"));
+}
+
+EP_setBackColor()
+{
+dyn_errClass err;
+
+  if( !dpExists( $dpe_alarm+\":_alert_hdl.._act_state_color\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_setBackColorCB\", 
+            $dpe_alarm+\":_alert_hdl.._act_state_color\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+EP_setBackColorCB(string dpSource, string sNewColor)
+{
+  setValue(\"\", \"backCol\", sNewColor);
+}
+
+// SimpleCtrlScript {EP_setVisible}
+// DP {$dpe_alarm}
+// DPConfig {:_alert_hdl.._act_state_color}
+// DPTyp {string}
+// Active {0}
+// Operator {equal}
+// Value {}
+// SimpleCtrlScriptEnd {EP_setVisible}
+// SimpleCtrlScript {EP_setBackColor}
+// DP {$dpe_alarm}
+// DPConfig {}
+// DPType {}
+// AlertHdl {TRUE}
+// DPEInvalid {}
+// DPEConfigInvalid {}
+// SimpleCtrlScriptEnd {EP_setBackColor}
+" 0
+ E 0 1 1 0 1 E U  1 E 3 24 72
+88 72
+56 16
+ 1
+10 6
+"Polyline2"
+""
+1 38 65 E E E 1 E 1 E N {255,0,0} E N {255,255,255} E E
+ E E
+7 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+2
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {valid}
+main()
+{
+  EP_setVisible();
+}
+
+EP_setVisible()
+{
+dyn_errClass err;
+
+  if( !dpExists( $dpe_alarm+\":_alert_hdl.._act_state_color\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_setVisibleCB\",
+            $dpe_alarm+\":_alert_hdl.._act_state_color\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+
+EP_setVisibleCB(string dp, string sNewValue)
+{
+  setValue(\"\", \"visible\",
+           !(sNewValue == \"\"));
+}
+
+// SimpleCtrlScript {EP_setVisible}
+// DP {$dpe_alarm}
+// DPConfig {:_alert_hdl.._act_state_color}
+// DPTyp {string}
+// Active {0}
+// Operator {equal}
+// Value {}
+// SimpleCtrlScriptEnd {EP_setVisible}
+" 0
+ E 0 1 1 0 1 E U  1 E 3 38 64
+74 64
+56 32
+ 1
+4 7
+"Line1"
+""
+1 57 39 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+2
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {valid}
+main()
+{
+  EP_setVisible();
+}
+
+EP_setVisible()
+{
+dyn_errClass err;
+
+  if( !dpExists( $dpe_alarm+\":_alert_hdl.._act_state_color\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_setVisibleCB\",
+            $dpe_alarm+\":_alert_hdl.._act_state_color\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+
+EP_setVisibleCB(string dp, string sNewValue)
+{
+  setValue(\"\", \"visible\",
+           !(sNewValue == \"\"));
+}
+
+// SimpleCtrlScript {EP_setVisible}
+// DP {$dpe_alarm}
+// DPConfig {:_alert_hdl.._act_state_color}
+// DPTyp {string}
+// Active {0}
+// Operator {equal}
+// Value {}
+// SimpleCtrlScriptEnd {EP_setVisible}
+" 0
+ E 0 2 1 0 1 E  57 53 57 39
+4 8
+"Line2"
+""
+1 57 61 E E E 1 E 1 E N "_WindowText" E N "_Transparent" E E
+ E E
+9 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+2
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {valid}
+main()
+{
+  EP_setVisible();
+}
+
+EP_setVisible()
+{
+dyn_errClass err;
+
+  if( !dpExists( $dpe_alarm+\":_alert_hdl.._act_state_color\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_setVisibleCB\",
+            $dpe_alarm+\":_alert_hdl.._act_state_color\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+
+EP_setVisibleCB(string dp, string sNewValue)
+{
+  setValue(\"\", \"visible\",
+           !(sNewValue == \"\"));
+}
+
+// SimpleCtrlScript {EP_setVisible}
+// DP {$dpe_alarm}
+// DPConfig {:_alert_hdl.._act_state_color}
+// DPTyp {string}
+// Active {0}
+// Operator {equal}
+// Value {}
+// SimpleCtrlScriptEnd {EP_setVisible}
+" 0
+ E 0 2 1 0 1 E  57 61 57 57
+0
+LAYER, 1 
+3
+LANG:10000 6 Layer2
+LANG:10001 6 Layer2
+LANG:10027 6 Layer2
+0
+LAYER, 2 
+3
+LANG:10000 6 Layer3
+LANG:10001 6 Layer3
+LANG:10027 6 Layer3
+0
+LAYER, 3 
+3
+LANG:10000 6 Layer4
+LANG:10001 6 Layer4
+LANG:10027 6 Layer4
+0
+LAYER, 4 
+3
+LANG:10000 6 Layer5
+LANG:10001 6 Layer5
+LANG:10027 6 Layer5
+0
+LAYER, 5 
+3
+LANG:10000 6 Layer6
+LANG:10001 6 Layer6
+LANG:10027 6 Layer6
+0
+LAYER, 6 
+3
+LANG:10000 6 Layer7
+LANG:10001 6 Layer7
+LANG:10027 6 Layer7
+0
+LAYER, 7 
+3
+LANG:10000 6 Layer8
+LANG:10001 6 Layer8
+LANG:10027 6 Layer8
+0
+0

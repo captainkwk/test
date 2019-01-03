@@ -1,0 +1,40 @@
+# ascii dump of database
+
+# DpType
+TypeName
+GS_SIM.GS_SIM	1#1
+	devices	1#2
+		on	23#3
+		responseDelay	21#4
+		allOff	23#8
+	model	1#5
+		on	23#6
+		cycleTime	21#7
+		noise	22#11
+	fullAuto	23#10
+
+# Datapoint/DpId
+DpName	TypeName	ID
+SimControl	GS_SIM	364
+
+# Aliases/Comments
+AliasId	AliasName	CommentName
+SimControl.devices.responseDelay	""	lt:2 LANG:0 "@%4d@ms" LANG:1 "@%4d@ms" 
+SimControl.model.cycleTime	""	lt:2 LANG:0 "@%4d@ms" LANG:1 "@%4d@ms" 
+SimControl.model.noise	""	lt:2 LANG:0 "@%2.1f@%" LANG:1 "@%2.1f@%" 
+
+# DpValue
+ElementName	TypeName	_original.._value	_original.._status	_original.._stime
+SimControl.devices.on	GS_SIM	1	0x101	07.05.2004 08:30:00.687
+SimControl.devices.responseDelay	GS_SIM	100	0x101	04.05.2004 14:47:44.547
+SimControl.model.on	GS_SIM	0	0x101	07.05.2004 08:29:48.589
+SimControl.model.cycleTime	GS_SIM	1000	0x101	04.05.2004 14:47:44.547
+SimControl.devices.allOff	GS_SIM	1	0x101	06.05.2004 13:37:06.370
+SimControl.fullAuto	GS_SIM	1	0x101	07.05.2004 08:29:53.987
+SimControl.model.noise	GS_SIM	5	0x101	04.05.2004 14:47:44.567
+
+# PvssRangeCheck
+ElementName	TypeName	_pv_range.._type	_pv_range.._ignor_inv	_pv_range.._neg	_pv_range.._min	_pv_range.._max	_pv_range.._incl_min	_pv_range.._incl_max	_pv_range.._set	_pv_range.._match
+SimControl.devices.responseDelay	GS_SIM	7	1	0	0	1000	1	1		
+SimControl.model.cycleTime	GS_SIM	7	1	0	500	5000	1	1		
+SimControl.model.noise	GS_SIM	7	1	0	0	20	1	1		

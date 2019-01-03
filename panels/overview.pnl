@@ -1,0 +1,132 @@
+V 13
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+PANEL,-1 -1 994 514 N "_3DFace" 0
+E E E E E 1 -1 -1 0  384 30
+""0  1
+E E 3
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+3
+LANG:10000 6 Layer1
+LANG:10001 6 Layer1
+LANG:10027 6 Layer1
+6 11
+"Border1"
+""
+1 112 500 E E E 1 E 1 E N "_Transparent" E N "_Transparent" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+2
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E U  2  1 4  "pictures/PlantIcons/powerplant.wmf" 4294967295 E 112 90 882 500
+2 0
+"Text1"
+""
+1 400 30 E E E 1 E 1 E N {51,51,51} E N "_Transparent" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+3
+"sizePolicy" "Fixed Fixed"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 0 1 E U  0 E 431 32 563 82
+0 2 0 "0s" 0 0 0 193 0 0  497 32 1
+3
+LANG:10000 26 Arial,-1,43,5,75,0,0,0,0,0
+LANG:10001 26 Arial,-1,43,5,75,0,0,0,0,0
+LANG:10027 26 Arial,-1,43,5,75,0,0,0,0,0
+0 3
+LANG:10000 10 Übersicht
+LANG:10001 8 Overview
+LANG:10027 10 Обзор
+1 12 0 "" 10
+0
+1 17 1 "" 10
+0
+0
+LAYER, 1 
+3
+LANG:10000 6 Layer2
+LANG:10001 6 Layer2
+LANG:10027 6 Layer2
+0
+LAYER, 2 
+3
+LANG:10000 6 Layer3
+LANG:10001 6 Layer3
+LANG:10027 6 Layer3
+0
+LAYER, 3 
+3
+LANG:10000 6 Layer4
+LANG:10001 6 Layer4
+LANG:10027 6 Layer4
+0
+LAYER, 4 
+3
+LANG:10000 6 Layer5
+LANG:10001 6 Layer5
+LANG:10027 6 Layer5
+0
+LAYER, 5 
+3
+LANG:10000 6 Layer6
+LANG:10001 6 Layer6
+LANG:10027 6 Layer6
+0
+LAYER, 6 
+3
+LANG:10000 6 Layer7
+LANG:10001 6 Layer7
+LANG:10027 6 Layer7
+0
+LAYER, 7 
+3
+LANG:10000 6 Layer8
+LANG:10001 6 Layer8
+LANG:10027 6 Layer8
+0
+3 0 "" -1
+"" ""
+"objects/STD_PANELS/PT_sum4.pnl" 294 269 T 2 1 0 1 -114 61
+6
+"$1""Warning"
+"$2""Alert"
+"$3""Danger"
+"$panelName""process.pnl"
+"$panelNumber""1"
+"$refNumber""0"
+3 1 "" -1
+"" ""
+"objects/STD_PANELS/PT_sum4.pnl" 518 330 T 3 1 0 1 -368 60
+6
+"$1""Warning"
+"$2""Alert"
+"$3""Danger"
+"$panelName""process_trends.pnl"
+"$panelNumber""1"
+"$refNumber""0"
+0

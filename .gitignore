@@ -1,0 +1,14 @@
+/db/wincc_oa/al??????????/*.db
+/db/wincc_oa/al??????????/*.dbd
+/db/wincc_oa/al??????????/*.key
+!/db/wincc_oa/al0000000000/*.db
+!/db/wincc_oa/al0000000000/*.key
+!/db/wincc_oa/al0000000000/*.dbd
+#/db/wincc_oa/aloverflow/**
+#/db/wincc_oa/alsave/**
+/db/wincc_oa/ancient/**
+/db/wincc_oa/VA_????/**
+/data/onlinebackup/**
+/bin/**
+/log/**
+/printers/**

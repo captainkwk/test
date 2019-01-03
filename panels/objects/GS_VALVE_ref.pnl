@@ -1,0 +1,314 @@
+V 13
+3
+LANG:10000 8 (NoName)
+LANG:10001 8 (NoName)
+LANG:10027 18 (БезИмени)
+PANEL,-1 -1 117 163 N "_3DFace" 1
+"$valve"
+E E E E E 1 -1 -1 0  24 136
+""0  1
+E E 3
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+3
+LANG:10000 6 Layer1
+LANG:10001 6 Layer1
+LANG:10027 6 Layer1
+6 0
+"Border1"
+""
+1 24 136 E E E 1 E 1 E N "_Transparent" E N {234,234,234} E E
+ "// SimpleCtrlScriptStart {valid}
+main()
+{
+  EP_childPanelOn();
+}
+
+EP_childPanelOn()
+{
+  ChildPanelOnRelativ(\"vision/dp_monitor.pnl\",
+      \"Monitor: \" + $valve,
+      makeDynString(\"$b_editable:1\", \"$dp:\" + $valve),
+      50, -80);
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnRelativ}
+// File {vision/dp_monitor.pnl}
+// Panel {\"Monitor: \"+$valve}
+// Parent {}
+// Module {}
+// OffsetX {50}
+// OffsetY {-80}
+// PanelPara1 {$b_editable:1}
+// PanelPara2 {$dp:$valve}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ E
+1 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+2
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {invalid}
+main()
+{
+  EP_setBackColor();
+  this.toolTipText = $valve + \" (\"+dpGetDescription($valve+\".\")+\")\";
+}
+
+EP_setBackColor()
+{
+dyn_errClass err;
+
+  if( !dpExists( $valve+\".state.position\"+\":_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_setBackColorCB\", 
+            $valve+\".state.position\"+\":_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+
+EP_setBackColorCB(string dpSource, float fNewValue)
+{
+  if (fNewValue == 0)
+    setValue(\"\", \"backCol\", \"STD_device_off\");
+  else
+    setValue(\"\", \"backCol\", \"STD_device_on\");
+}
+
+// SimpleCtrlScript {EP_setBackColor}
+// DP {$valve+\".state.position\"}
+// DPConfig {:_online.._value}
+// DPType {float}
+// AlertHdl {FALSE}
+// DPEInvalid {}
+// DPEConfigInvalid {}
+// Operator1 {equal}
+// Operant1 {0}
+// Color1 {STD_device_off}
+// Operator2 {else}
+// Operant2 {}
+// Color2 {STD_device_on}
+// SimpleCtrlScriptEnd {EP_setBackColor}
+" 0
+ "// SimpleCtrlScriptStart {valid}
+main()
+{
+  EP_childPanelOn();
+}
+
+EP_childPanelOn()
+{
+  ChildPanelOnRelativ(\"objects_parts/GS_VALVE_dialog.pnl\",
+      $valve,
+      makeDynString(\"$valve:\" + $valve),
+      50, -50);
+}
+
+// SimpleCtrlScript {EP_childPanelOn}
+// Function {ChildPanelOnRelativ}
+// File {objects_parts/GS_VALVE_dialog.pnl}
+// Panel {$valve}
+// Parent {}
+// Module {}
+// OffsetX {50}
+// OffsetY {-50}
+// PanelPara1 {$valve:$valve}
+// SimpleCtrlScriptEnd {EP_childPanelOn}
+" 0
+ 0 1 1 0 1 E U  2  1 4  "pictures/Valves/slide_valve_realistic_complete_3_h_t.wmf" 4294967295 E 24 24 96 136
+6 1
+"Border2"
+""
+1 69 59 E E E 1 E 1 E N "_Transparent" E N "_Transparent" E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+2
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {valid}
+main()
+{
+  EP_setVisible();
+}
+
+EP_setVisible()
+{
+dyn_errClass err;
+
+  if( !dpExists( $valve+\".state.manual\"+\":_online.._value\"))
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_setVisibleCB\",
+            $valve+\".state.manual\"+\":_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+
+EP_setVisibleCB(string dp, bool boNewValue)
+{
+    setValue(\"\", \"visible\", boNewValue);
+}
+
+// SimpleCtrlScript {EP_setVisible}
+// DP {$valve+\".state.manual\"}
+// DPConfig {:_online.._value}
+// DPTyp {bool}
+// Active {1}
+// Operator {less}
+// Value {TRUE}
+// SimpleCtrlScriptEnd {EP_setVisible}
+" 0
+ E 0 1 1 0 1 E U  2  1 4  "pictures/Indicators/manual_mode_hand_yellow.wmf" 4294967295 E 69 27 101 59
+6 2
+"Border3"
+""
+1 57 121 E E E 1 E 1 E N "_WindowText" E N {255,255,255} E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+2
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"// SimpleCtrlScriptStart {valid}
+main()
+{
+  EP_setRotation();
+}
+
+EP_setRotation()
+{
+dyn_errClass err;
+
+  if( !dpExists( $valve+\".state.position\"+\":_online.._value\") )
+  {
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+    return;
+  }
+
+  dpConnect(\"EP_setRotationCB\",
+            $valve+\".state.position\"+\":_online.._value\");
+  err = getLastError();
+  if (dynlen(err) > 0)
+    setValue(\"\", \"color\", \"_dpdoesnotexist\");
+
+}
+
+
+EP_setRotationCB(string dp1, float fNewValue)
+{
+float MIN_VALUE = 0;
+float MAX_VALUE = 100;
+float MIN_ROTATION = 0;
+float MAX_ROTATION = 90;
+
+float fRotation;
+  fRotation = ( 1.0 * (MAX_ROTATION - MIN_ROTATION) / (MAX_VALUE - MIN_VALUE)) * 
+              (fNewValue - MIN_VALUE) + MIN_ROTATION;
+  if (fRotation > MAX_ROTATION) fRotation = MAX_ROTATION;
+  else if (fRotation < MIN_ROTATION) fRotation = MIN_ROTATION;
+
+  setValue(\"\", \"rotation\", fRotation);
+}
+
+// SimpleCtrlScript {EP_setRotation}
+// DP {$valve+\".state.position\"}
+// DPConfig {:_online.._value}
+// DPType {float}
+// PVSSRange {0}
+// Min {0}
+// Max {100}
+// MinRotation {0}
+// MaxRotation {90}
+// SimpleCtrlScriptEnd {EP_setRotation}
+" 0
+ E 0 1 1 0 1 E U  1 E 54 112 59 130
+1 3 1 "" 4
+0
+0
+LAYER, 1 
+3
+LANG:10000 6 Layer2
+LANG:10001 6 Layer2
+LANG:10027 6 Layer2
+0
+LAYER, 2 
+3
+LANG:10000 6 Layer3
+LANG:10001 6 Layer3
+LANG:10027 6 Layer3
+0
+LAYER, 3 
+3
+LANG:10000 6 Layer4
+LANG:10001 6 Layer4
+LANG:10027 6 Layer4
+0
+LAYER, 4 
+3
+LANG:10000 6 Layer5
+LANG:10001 6 Layer5
+LANG:10027 6 Layer5
+0
+LAYER, 5 
+3
+LANG:10000 6 Layer6
+LANG:10001 6 Layer6
+LANG:10027 6 Layer6
+0
+LAYER, 6 
+3
+LANG:10000 6 Layer7
+LANG:10001 6 Layer7
+LANG:10027 6 Layer7
+0
+LAYER, 7 
+3
+LANG:10000 6 Layer8
+LANG:10001 6 Layer8
+LANG:10027 6 Layer8
+0
+3 1 "" -1
+"" ""
+"objects/alarm_indicator_ref.pnl" 32 35 T 6 0.5 0 0.5 5 38.5
+1
+"$dpe_alarm""$valve+\".alarm\""
+0
